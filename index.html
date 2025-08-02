@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Maxwell Rumahorbo - Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
@@ -31,20 +34,77 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <!-- Animated Background -->
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+                <div class="shape shape-5"></div>
+            </div>
+        </div>
+
+        <!-- Hero Content -->
         <div class="hero-container">
-            <div class="hero-content">
-                <h1>Halo, Saya <span class="highlight">John Doe</span></h1>
-                <h2>Frontend Developer</h2>
-                <p>Saya seorang developer yang passionate dalam menciptakan pengalaman web yang luar biasa dan interaktif.</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">Lihat Proyek</a>
-                    <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
+            <div class="hero-card">
+                <!-- Profile Photo -->
+                <div class="profile-section">
+                    <div class="profile-photo">
+                        <img src="https://via.placeholder.com/280x280/24283b/c0caf5?text=YOUR+PHOTO" alt="Maxwell Rumahorbo" id="profile-img">
+                        <div class="photo-glow"></div>
+                    </div>
+                </div>
+
+                <!-- Profile Info -->
+                <div class="profile-info">
+                    <h1 class="profile-name">
+                        Hello, I'm <span class="highlight">Maxwell Rumahorbo</span>
+                    </h1>
+                    <h2 class="profile-role">Information Systems Student</h2>
+                    <p class="profile-description">
+                        Passionate developer from Institut Teknologi Del, class of 2024. 
+                        I love creating innovative web solutions and exploring new technologies 
+                        to build amazing digital experiences.
+                    </p>
+                    
+                    <!-- Quick Stats -->
+                    <div class="quick-stats">
+                        <div class="stat-badge">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>2024 Graduate</span>
+                        </div>
+                        <div class="stat-badge">
+                            <i class="fas fa-code"></i>
+                            <span>Web Developer</span>
+                        </div>
+                        <div class="stat-badge">
+                            <i class="fas fa-university"></i>
+                            <span>IT Del</span>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="hero-actions">
+                        <a href="#about" class="btn btn-primary">
+                            <i class="fas fa-user"></i> Learn More
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">
+                            <i class="fas fa-briefcase"></i> View Work
+                        </a>
+                        <a href="#contact" class="btn btn-outline">
+                            <i class="fas fa-envelope"></i> Say Hi
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="profile-pic">
-                    <i class="fas fa-user-circle"></i>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-arrow">
+                    <i class="fas fa-chevron-down"></i>
                 </div>
+                <span>Scroll to explore</span>
             </div>
         </div>
     </section>
@@ -52,23 +112,163 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">Tentang Saya</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Saya adalah seorang Frontend Developer dengan pengalaman lebih dari 3 tahun dalam industri teknologi. Saya memiliki passion yang kuat dalam menciptakan antarmuka pengguna yang menarik dan fungsional.</p>
-                    <p>Saya selalu antusias untuk mempelajari teknologi baru dan mengimplementasikannya dalam proyek-proyek yang menantang. Saya percaya bahwa detail kecil dapat membuat perbedaan besar dalam pengalaman pengguna.</p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <h3>20+</h3>
-                            <p>Proyek Selesai</p>
+            <h2 class="section-title">About Me</h2>
+            <div class="code-editor">
+                <!-- Editor Header -->
+                <div class="editor-header">
+                    <div class="editor-tabs">
+                        <div class="tab active">
+                            <i class="fas fa-file-code"></i>
+                            <span>about.js</span>
+                            <i class="fas fa-times tab-close"></i>
                         </div>
-                        <div class="stat">
-                            <h3>3+</h3>
-                            <p>Tahun Pengalaman</p>
+                        <div class="tab">
+                            <i class="fas fa-file-alt"></i>
+                            <span>experience.json</span>
                         </div>
-                        <div class="stat">
-                            <h3>15+</h3>
-                            <p>Klien Puas</p>
+                        <div class="tab">
+                            <i class="fas fa-cog"></i>
+                            <span>config.yml</span>
+                        </div>
+                    </div>
+                    <div class="editor-controls">
+                        <div class="traffic-lights">
+                            <span class="light red"></span>
+                            <span class="light yellow"></span>
+                            <span class="light green"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Editor Content -->
+                <div class="editor-content">
+                    <div class="line-numbers">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                        <span>13</span>
+                        <span>14</span>
+                        <span>15</span>
+                        <span>16</span>
+                        <span>17</span>
+                        <span>18</span>
+                    </div>
+                    
+                    <div class="code-area">
+                        <div class="code-line">
+                            <span class="keyword">class</span> 
+                            <span class="class-name">MaxwellRumahorbo</span> 
+                            <span class="punctuation">{</span>
+                        </div>
+                        <div class="code-line indent">
+                            <span class="keyword">constructor</span><span class="punctuation">() {</span>
+                        </div>
+                        <div class="code-line double-indent">
+                            <span class="keyword">this</span><span class="punctuation">.</span><span class="property">name</span> 
+                            <span class="operator">=</span> <span class="string">"Maxwell Rumahorbo"</span><span class="punctuation">;</span>
+                        </div>
+                        <div class="code-line double-indent">
+                            <span class="keyword">this</span><span class="punctuation">.</span><span class="property">role</span> 
+                            <span class="operator">=</span> <span class="string">"Information Systems Student"</span><span class="punctuation">;</span>
+                        </div>
+                        <div class="code-line double-indent">
+                            <span class="keyword">this</span><span class="punctuation">.</span><span class="property">university</span> 
+                            <span class="operator">=</span> <span class="string">"Institut Teknologi Del"</span><span class="punctuation">;</span>
+                        </div>
+                        <div class="code-line double-indent">
+                            <span class="keyword">this</span><span class="punctuation">.</span><span class="property">graduateYear</span> 
+                            <span class="operator">=</span> <span class="number">2024</span><span class="punctuation">;</span>
+                        </div>
+                        <div class="code-line double-indent">
+                            <span class="keyword">this</span><span class="punctuation">.</span><span class="property">technologies</span> 
+                            <span class="operator">=</span> <span class="punctuation">[</span><span class="string">"HTML5"</span><span class="punctuation">,</span> 
+                            <span class="string">"CSS3"</span><span class="punctuation">,</span> <span class="string">"JavaScript"</span><span class="punctuation">,</span> 
+                            <span class="string">"React"</span><span class="punctuation">];</span>
+                        </div>
+                        <div class="code-line indent">
+                            <span class="punctuation">}</span>
+                        </div>
+                        <div class="code-line">
+                            
+                        </div>
+                        <div class="code-line indent">
+                            <span class="method">getPassion</span><span class="punctuation">() {</span>
+                        </div>
+                        <div class="code-line double-indent">
+                            <span class="keyword">return</span> <span class="string">"Creating innovative web solutions and"</span> <span class="operator">+</span>
+                        </div>
+                        <div class="code-line triple-indent">
+                            <span class="string">"learning new technologies every day"</span><span class="punctuation">;</span>
+                        </div>
+                        <div class="code-line indent">
+                            <span class="punctuation">}</span>
+                        </div>
+                        <div class="code-line">
+                            
+                        </div>
+                        <div class="code-line indent">
+                            <span class="method">getGoal</span><span class="punctuation">() {</span>
+                        </div>
+                        <div class="code-line double-indent">
+                            <span class="keyword">return</span> <span class="string">"Building the future, one line of code at a time"</span><span class="punctuation">;</span>
+                        </div>
+                        <div class="code-line indent">
+                            <span class="punctuation">}</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="punctuation">}</span>
+                        </div>
+                        <div class="code-line">
+                            
+                        </div>
+                        <div class="code-line">
+                            <span class="comment">// Initialize developer instance</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="keyword">const</span> <span class="variable">maxwell</span> 
+                            <span class="operator">=</span> <span class="keyword">new</span> 
+                            <span class="class-name">MaxwellRumahorbo</span><span class="punctuation">();</span>
+                            <span class="cursor">|</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="code-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>10+</h3>
+                            <p>Projects Completed</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>2024</h3>
+                            <p>Graduate Year</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>IT Del</h3>
+                            <p>University</p>
                         </div>
                     </div>
                 </div>
@@ -79,7 +279,7 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
-            <h2 class="section-title">Keahlian</h2>
+            <h2 class="section-title">Skills</h2>
             <div class="skills-grid">
                 <div class="skill-item">
                     <div class="skill-icon">
@@ -142,7 +342,7 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2 class="section-title">Proyek Saya</h2>
+            <h2 class="section-title">My Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
@@ -150,7 +350,7 @@
                     </div>
                     <div class="project-content">
                         <h3>E-Commerce Website</h3>
-                        <p>Website e-commerce modern dengan fitur keranjang belanja, sistem pembayaran, dan admin dashboard.</p>
+                        <p>A modern e-commerce website with shopping cart features, payment system, and admin dashboard.</p>
                         <div class="project-tech">
                             <span>HTML</span>
                             <span>CSS</span>
@@ -169,7 +369,7 @@
                     </div>
                     <div class="project-content">
                         <h3>Blog Platform</h3>
-                        <p>Platform blog dengan fitur CRUD, sistem komentar, dan panel admin untuk mengelola konten.</p>
+                        <p>A blog platform with CRUD features, comment system, and admin panel for content management.</p>
                         <div class="project-tech">
                             <span>HTML</span>
                             <span>CSS</span>
@@ -188,7 +388,7 @@
                     </div>
                     <div class="project-content">
                         <h3>Calculator App</h3>
-                        <p>Aplikasi kalkulator interaktif dengan desain modern dan fitur perhitungan matematika lengkap.</p>
+                        <p>An interactive calculator application with modern design and comprehensive mathematical computation features.</p>
                         <div class="project-tech">
                             <span>HTML</span>
                             <span>CSS</span>
@@ -207,58 +407,54 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Hubungi Saya</h2>
+            <h2 class="section-title">Reach Me Out!</h2>
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+                    <div class="contact-apps">
+                        <h3>Connect with me</h3>
+                        <div class="app-links">
+                            <a href="https://wa.me/6282183096287" class="app-link" data-app="whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                            <a href="mailto:maxrumbo@gmail.com" class="app-link" data-app="email">
+                                <i class="fas fa-envelope"></i>
+                                <span>Email</span>
+                            </a>
+                            <a href="https://github.com/maxrumbo" class="app-link" data-app="github" target="_blank">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://stackoverflow.com/users/27343136/maxwell-rumahorbo" class="app-link" data-app="stackoverflow" target="_blank">
+                                <i class="fab fa-stack-overflow"></i>
+                                <span>Stack Overflow</span>
+                            </a>
+                            <a href="https://codepen.io/maxrumbo" class="app-link" data-app="codepen" target="_blank">
+                                <i class="fab fa-codepen"></i>
+                                <span>Codepen</span>
+                            </a>
+                            <a href="https://instagram.com/maxwellrumbo_" class="app-link" data-app="instagram" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
                         </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p>john.doe@email.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Phone</h3>
-                            <p>+62 123 456 7890</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Lokasi</h3>
-                            <p>Jakarta, Indonesia</p>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="contact-form">
                     <form id="contact-form">
                         <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Nama Anda" required>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Email Anda" required>
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder="Subjek" required>
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Pesan Anda" rows="5" required></textarea>
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -268,7 +464,10 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 John Doe. All rights reserved.</p>
+            <div class="footer-code">
+                <span class="code-line">printf("© maxrumbo. Made with Pride!");</span>
+                <span class="output-line">© maxrumbo. Made with Pride!</span>
+            </div>
         </div>
     </footer>
 

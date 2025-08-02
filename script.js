@@ -473,3 +473,71 @@ const debouncedScrollHandler = debounce(() => {
 }, 10);
 
 window.addEventListener('scroll', debouncedScrollHandler);
+
+// Glassmorphism Hero Interactivity
+document.addEventListener('DOMContentLoaded', () => {
+    // Mouse parallax effect for floating shapes
+    const heroSection = document.querySelector('.hero');
+    const floatingShapes = document.querySelectorAll('.shape');
+    
+    if (heroSection && floatingShapes.length > 0) {
+        heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+            
+            floatingShapes.forEach((shape, index) => {
+                const speed = (index + 1) * 0.5;
+                const moveX = (x - 0.5) * speed * 20;
+                const moveY = (y - 0.5) * speed * 20;
+                
+                shape.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+        });
+        
+        // Reset shapes position when mouse leaves
+        heroSection.addEventListener('mouseleave', () => {
+            floatingShapes.forEach(shape => {
+                shape.style.transform = 'translate(0, 0)';
+            });
+        });
+    }
+    
+    // Profile photo click interaction
+    const profilePhoto = document.querySelector('.profile-photo');
+    if (profilePhoto) {
+        profilePhoto.addEventListener('click', () => {
+            // Add a pulse animation class
+            profilePhoto.classList.add('photo-pulse');
+            setTimeout(() => {
+                profilePhoto.classList.remove('photo-pulse');
+            }, 600);
+        });
+    }
+    
+    // Enhanced button hover effects for hero actions
+    const heroButtons = document.querySelectorAll('.hero-actions .btn');
+    heroButtons.forEach(button => {
+        button.addEventListener('mouseenter', (e) => {
+            // Create ripple effect
+            const ripple = document.createElement('div');
+            ripple.classList.add('ripple-effect');
+            button.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+    
+    // Scroll indicator smooth scroll
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', () => {
+            const aboutSection = document.querySelector('#about');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+});
