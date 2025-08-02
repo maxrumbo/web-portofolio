@@ -474,218 +474,35 @@ const debouncedScrollHandler = debounce(() => {
 
 window.addEventListener('scroll', debouncedScrollHandler);
 
-// Glassmorphism Hero Interactivity
+// Photo Background Hero Interactivity
 document.addEventListener('DOMContentLoaded', () => {
-    // Mouse parallax effect for floating shapes
-    const heroSection = document.querySelector('.hero');
-    const floatingShapes = document.querySelectorAll('.shape');
-    
-    if (heroSection && floatingShapes.length > 0) {
-        heroSection.addEventListener('mousemove', (e) => {
-            const rect = heroSection.getBoundingClientRect();
-            const x = (e.clientX - rect.left) / rect.width;
-            const y = (e.clientY - rect.top) / rect.height;
-            
-            floatingShapes.forEach((shape, index) => {
-                const speed = (index + 1) * 0.5;
-                const moveX = (x - 0.5) * speed * 30;
-                const moveY = (y - 0.5) * speed * 30;
-                
-                shape.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            });
-            
-            // Parallax effect for hero card
-            const heroCard = document.querySelector('.hero-card');
-            if (heroCard) {
-                const cardMoveX = (x - 0.5) * 15;
-                const cardMoveY = (y - 0.5) * 15;
-                heroCard.style.transform = `perspective(1000px) rotateY(${cardMoveX * 0.1}deg) rotateX(${-cardMoveY * 0.1}deg)`;
-            }
-        });
-        
-        // Reset shapes position when mouse leaves
-        heroSection.addEventListener('mouseleave', () => {
-            floatingShapes.forEach(shape => {
-                shape.style.transform = 'translate(0, 0)';
-            });
-            
-            const heroCard = document.querySelector('.hero-card');
-            if (heroCard) {
-                heroCard.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
-            }
-        });
-    }
-    
-    // Profile photo advanced interactions
-    const profilePhoto = document.querySelector('.profile-photo');
-    if (profilePhoto) {
-        profilePhoto.addEventListener('click', () => {
-            // Add a pulse animation class
-            profilePhoto.classList.add('photo-pulse');
-            setTimeout(() => {
-                profilePhoto.classList.remove('photo-pulse');
-            }, 600);
-        });
-        
-        // Double click for special effect
-        let clickCount = 0;
-        profilePhoto.addEventListener('click', () => {
-            clickCount++;
-            if (clickCount === 2) {
-                createPhotoSparkles();
-                clickCount = 0;
-            }
-            setTimeout(() => {
-                clickCount = 0;
-            }, 300);
-        });
-    }
-    
-    // Enhanced button hover effects for hero actions
-    const heroButtons = document.querySelectorAll('.hero-actions .btn');
-    heroButtons.forEach(button => {
-        button.addEventListener('mouseenter', (e) => {
-            // Create ripple effect
-            const ripple = document.createElement('div');
-            ripple.classList.add('ripple-effect');
-            
-            const rect = button.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-            
-            ripple.style.width = ripple.style.height = size + 'px';
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
-            
-            button.appendChild(ripple);
-            
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
-    });
-    
-    // Scroll indicator smooth scroll with easing
-    const scrollIndicator = document.querySelector('.scroll-indicator');
+    // Simple scroll indicator functionality
+    const scrollIndicator = document.querySelector('.scroll-indicator-simple');
     if (scrollIndicator) {
         scrollIndicator.addEventListener('click', () => {
             const aboutSection = document.querySelector('#about');
             if (aboutSection) {
-                // Custom smooth scroll with easing
-                const start = window.pageYOffset;
-                const target = aboutSection.offsetTop - 70;
-                const distance = target - start;
-                const duration = 1000;
-                let startTime = null;
-                
-                function easeInOutCubic(t) {
-                    return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-                }
-                
-                function animation(currentTime) {
-                    if (startTime === null) startTime = currentTime;
-                    const timeElapsed = currentTime - startTime;
-                    const progress = Math.min(timeElapsed / duration, 1);
-                    const ease = easeInOutCubic(progress);
-                    
-                    window.scrollTo(0, start + distance * ease);
-                    
-                    if (timeElapsed < duration) {
-                        requestAnimationFrame(animation);
-                    }
-                }
-                
-                requestAnimationFrame(animation);
+                aboutSection.scrollIntoView({ behavior: 'smooth' });
             }
         });
     }
     
-    // Stats badges animation on hover
-    const statBadges = document.querySelectorAll('.stat-badge');
-    statBadges.forEach((badge, index) => {
-        badge.addEventListener('mouseenter', () => {
-            // Stagger animation for other badges
-            statBadges.forEach((otherBadge, otherIndex) => {
-                if (otherIndex !== index) {
-                    setTimeout(() => {
-                        otherBadge.style.transform = 'translateY(-2px) scale(0.98)';
-                        setTimeout(() => {
-                            otherBadge.style.transform = '';
-                        }, 200);
-                    }, Math.abs(otherIndex - index) * 50);
-                }
-            });
+    // Parallax effect for background image
+    const backgroundImage = document.querySelector('.background-image');
+    if (backgroundImage) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.3;
+            backgroundImage.style.transform = `translateY(${rate}px)`;
         });
-    });
+    }
     
-    // Dynamic background based on time
-    updateBackgroundByTime();
-    setInterval(updateBackgroundByTime, 60000); // Update every minute
+    // Add entrance animation delay for better UX
+    const heroContentOverlay = document.querySelector('.hero-content-overlay');
+    if (heroContentOverlay) {
+        setTimeout(() => {
+            heroContentOverlay.style.opacity = '1';
+            heroContentOverlay.style.transform = 'translateY(0)';
+        }, 300);
+    }
 });
-
-// Create sparkles effect for profile photo
-function createPhotoSparkles() {
-    const profilePhoto = document.querySelector('.profile-photo');
-    if (!profilePhoto) return;
-    
-    for (let i = 0; i < 15; i++) {
-        const sparkle = document.createElement('div');
-        sparkle.style.cssText = `
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: linear-gradient(45deg, #7dcfff, #bb9af7);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1000;
-        `;
-        
-        const rect = profilePhoto.getBoundingClientRect();
-        const x = rect.left + Math.random() * rect.width;
-        const y = rect.top + Math.random() * rect.height;
-        
-        sparkle.style.left = x + 'px';
-        sparkle.style.top = y + 'px';
-        
-        document.body.appendChild(sparkle);
-        
-        // Animate sparkle
-        const angle = Math.random() * Math.PI * 2;
-        const distance = 50 + Math.random() * 50;
-        const endX = x + Math.cos(angle) * distance;
-        const endY = y + Math.sin(angle) * distance;
-        
-        sparkle.animate([
-            { transform: 'translate(0, 0) scale(0)', opacity: 1 },
-            { transform: `translate(${endX - x}px, ${endY - y}px) scale(1)`, opacity: 0.8, offset: 0.5 },
-            { transform: `translate(${endX - x}px, ${endY - y}px) scale(0)`, opacity: 0 }
-        ], {
-            duration: 1000 + Math.random() * 500,
-            easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-        }).onfinish = () => sparkle.remove();
-    }
-}
-
-// Update background based on time of day
-function updateBackgroundByTime() {
-    const now = new Date();
-    const hour = now.getHours();
-    const heroBackground = document.querySelector('.hero-background');
-    
-    if (!heroBackground) return;
-    
-    if (hour >= 6 && hour < 12) {
-        // Morning - lighter, more blue
-        heroBackground.style.background += ', radial-gradient(circle at 70% 30%, rgba(125, 207, 255, 0.2) 0%, transparent 50%)';
-    } else if (hour >= 12 && hour < 18) {
-        // Afternoon - balanced
-        heroBackground.style.background += ', radial-gradient(circle at 50% 50%, rgba(187, 154, 247, 0.15) 0%, transparent 50%)';
-    } else if (hour >= 18 && hour < 22) {
-        // Evening - warmer, more purple
-        heroBackground.style.background += ', radial-gradient(circle at 30% 70%, rgba(187, 154, 247, 0.25) 0%, transparent 50%)';
-    } else {
-        // Night - darker, more mysterious
-        heroBackground.style.background += ', radial-gradient(circle at 10% 90%, rgba(125, 207, 255, 0.1) 0%, transparent 50%)';
-    }
-}
