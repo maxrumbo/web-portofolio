@@ -74,17 +74,29 @@ cd web-portofolio
 ```
 
 ### Local Development
-Open `index.html` in your preferred browser or use a local server:
+This is a static website, so you can simply:
 
+**Option 1: Direct Browser Access**
 ```bash
-# Using Python
+# Open index.html directly in your browser
+open index.html  # macOS
+start index.html # Windows
+xdg-open index.html # Linux
+```
+
+**Option 2: Live Server (Recommended for development)**
+If you're using VS Code, install the "Live Server" extension and right-click on `index.html` → "Open with Live Server"
+
+**Option 3: Local Server (Optional)**
+If you prefer using a local server:
+```bash
+# Using Python (if you have Python installed)
 python -m http.server 8000
 
-# Using Node.js (http-server)
+# Using Node.js (if you have Node.js installed)
 npx http-server
 
-# Using PHP
-php -S localhost:8000
+# Then open http://localhost:8000 in your browser
 ```
 
 ## 🎨 Customization Guide
