@@ -1,5 +1,5 @@
 ---
-# Web Pertama ni bray..
+# Web Pertama ni brayy
 A professional portfolio website built with modern web technologies including HTML5, CSS3, and vanilla JavaScript.
 
 ## 🚀 Live Demo
