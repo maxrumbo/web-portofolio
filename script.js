@@ -5,6 +5,100 @@ const navbar = document.querySelector('.navbar');
 const navLinks = document.querySelectorAll('.nav-link');
 const contactForm = document.getElementById('contact-form');
 
+// Scroll Animation Observer
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Add active class to main element
+            entry.target.classList.add('active');
+            
+            // Handle section titles
+            const sectionTitle = entry.target.querySelector('.section-title');
+            if (sectionTitle) {
+                setTimeout(() => {
+                    sectionTitle.classList.add('active');
+                }, 200);
+            }
+            
+            // Handle stagger items with delay
+            const staggerItems = entry.target.querySelectorAll('.stagger-item');
+            staggerItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('active');
+                }, index * 100); // 100ms delay between each item
+            });
+            
+            // Handle waterfall items with longer delay for cascade effect
+            const waterfallItems = entry.target.querySelectorAll('.waterfall-item');
+            waterfallItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('active');
+                }, index * 200); // 200ms delay between each item for waterfall
+            });
+            
+            // Handle flip cards with sequential animation
+            const flipCards = entry.target.querySelectorAll('.flip-card');
+            flipCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('active');
+                }, index * 150); // 150ms delay between each card flip
+            });
+        }
+    });
+}, observerOptions);
+
+// Observe all animated sections
+document.addEventListener('DOMContentLoaded', () => {
+    // Observe main sections
+    const animatedSections = document.querySelectorAll('.fade-up, .fade-in, .slide-left, .slide-right, .scale-up, .rotate-in');
+    animatedSections.forEach(section => {
+        observer.observe(section);
+    });
+    
+    // Observe individual animated elements
+    const waterfallItems = document.querySelectorAll('.waterfall-item');
+    const flipCards = document.querySelectorAll('.flip-card');
+    const sectionTitles = document.querySelectorAll('.section-title');
+    
+    // Add to observer if they are standalone (not inside observed sections)
+    [...waterfallItems, ...flipCards, ...sectionTitles].forEach(element => {
+        const parentSection = element.closest('.fade-up, .fade-in, .slide-left, .slide-right, .scale-up, .rotate-in');
+        if (!parentSection) {
+            observer.observe(element);
+        }
+    });
+    
+    // Initialize progress bars animation
+    initProgressBars();
+});
+
+// Progress bars animation
+function initProgressBars() {
+    const progressBars = document.querySelectorAll('.progress');
+    
+    const progressObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const progressBar = entry.target;
+                const width = progressBar.getAttribute('data-width');
+                
+                setTimeout(() => {
+                    progressBar.style.width = width;
+                }, 300);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    progressBars.forEach(bar => {
+        progressObserver.observe(bar);
+    });
+}
+
 // Mobile Navigation Toggle
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
@@ -80,31 +174,6 @@ function animateProgressBars() {
         }, 500);
     });
 }
-
-// Intersection Observer for animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            if (entry.target.classList.contains('skills')) {
-                animateProgressBars();
-            }
-            
-            // Add animation classes
-            entry.target.classList.add('animate');
-        }
-    });
-}, observerOptions);
-
-// Observe sections for animations
-const sections = document.querySelectorAll('section');
-sections.forEach(section => {
-    observer.observe(section);
-});
 
 // Contact form handling
 contactForm.addEventListener('submit', (e) => {
