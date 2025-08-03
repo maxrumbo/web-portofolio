@@ -1,5 +1,31 @@
-/* Reset dan Base Styles */
-/* Global Smooth Transitions for Theme Switching */
+/* GitHub Light Theme */
+
+/* GitHub Light Color Variables */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f6f8fa;
+    --bg-tertiary: #eaeef2;
+    --border-primary: #d0d7de;
+    --border-secondary: #afb8c1;
+    --text-primary: #24292f;
+    --text-secondary: #656d76;
+    --text-muted: #8b949e;
+    --accent-blue: #0969da;
+    --accent-green: #1a7f37;
+    --accent-orange: #bc4c00;
+    --accent-red: #cf222e;
+    --accent-purple: #8250df;
+    
+    /* RGB values for rgba usage */
+    --bg-primary-rgb: 255, 255, 255;
+    --bg-secondary-rgb: 246, 248, 250;
+    --shadow-dark-rgb: 27, 31, 35;
+    --accent-blue-rgb: 9, 105, 218;
+    --accent-purple-rgb: 130, 80, 223;
+    --text-light-rgb: 36, 41, 47;
+}
+
+/* Reset and Base */
 * {
     margin: 0;
     padding: 0;
@@ -16,18 +42,50 @@
 
 html {
     scroll-behavior: smooth;
+    font-size: 16px;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
     line-height: 1.6;
-    color: #4c566a; /* Dark text for light background */
-    background-color: #eceff4; /* Light background */
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
     overflow-x: hidden;
     transition: all 0.3s ease;
 }
 
-/* Animation Styles (These generally remain the same as they relate to opacity/transform) */
+/* Custom Scrollbar - GitHub Light Style */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-primary);
+    border-radius: 6px;
+    border: 2px solid var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--border-secondary);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.25;
+}
+
+p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Animation Styles */
 .fade-up {
     opacity: 0;
     transform: translateY(50px);
@@ -37,15 +95,6 @@ body {
 .fade-up.active {
     opacity: 1;
     transform: translateY(0);
-}
-
-.fade-in {
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-.fade-in.active {
-    opacity: 1;
 }
 
 .slide-left {
@@ -147,181 +196,172 @@ body {
     padding: 0 20px;
 }
 
-/* Navigation */
+/* Navigation - GitHub Light Style */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(236, 239, 244, 0.95); /* Light background, slightly transparent */
-    backdrop-filter: blur(10px);
+    background: rgba(var(--bg-primary-rgb), 0.95);
+    backdrop-filter: blur(12px);
     z-index: 1000;
-    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-primary);
     transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(100, 70, 150, 0.1); /* Darker accent border */
 }
 
 .navbar.scrolled {
-    background: rgba(236, 239, 244, 0.98); /* Less transparent when scrolled */
-    box-shadow: 0 2px 20px rgba(100, 70, 150, 0.1); /* Darker accent shadow */
+    background: rgba(var(--bg-primary-rgb), 0.98);
+    box-shadow: 0 8px 24px rgba(var(--shadow-dark-rgb), 0.04);
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.nav-logo a {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #4c566a; /* Darker text */
-    text-decoration: none;
-    background: linear-gradient(45deg, #2b8ee3, #7a46c3); /* Accent gradient */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    height: 64px;
 }
 
 .nav-menu {
     display: flex;
-    gap: 2rem;
+    gap: 24px;
+    align-items: center;
 }
 
 .nav-link {
-    color: #4c566a; /* Darker text */
+    color: var(--text-primary);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
     position: relative;
 }
 
 .nav-link:hover {
-    color: #2b8ee3; /* Accent hover color */
+    color: var(--accent-blue);
+    background-color: var(--bg-tertiary);
 }
 
-.nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background: linear-gradient(45deg, #2b8ee3, #7a46c3); /* Accent gradient */
-    transition: width 0.3s ease;
+.nav-link.active {
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
 }
 
-.nav-link:hover::after {
-    width: 100%;
-}
-
-/* Theme Toggle Button */
+/* Theme Toggle - GitHub Light Style */
 .theme-toggle {
-    background: linear-gradient(135deg, #2b8ee3, #7a46c3); /* Accent gradient */
-    border: none;
-    color: #eceff4; /* Light text for accent button */
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    color: var(--text-primary);
+    padding: 8px 16px;
+    border-radius: 6px;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 8px;
     font-weight: 500;
-    font-family: inherit;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(43, 142, 227, 0.3); /* Accent shadow */
-    position: relative;
-    overflow: hidden;
-}
-
-.theme-toggle::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-}
-
-.theme-toggle:hover::before {
-    left: 100%;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .theme-toggle:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(43, 142, 227, 0.4); /* Accent shadow on hover */
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-secondary);
 }
 
-.theme-toggle:active {
-    transform: translateY(0);
-}
-
-#themeIcon {
-    font-size: 1.1rem;
-    transition: transform 0.3s ease;
-}
-
-.theme-toggle:hover #themeIcon {
-    transform: rotate(360deg);
-}
-
+/* Hamburger Menu */
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    z-index: 1001;
 }
 
-.bar {
+.hamburger span {
     width: 25px;
     height: 3px;
-    background-color: #4c566a; /* Darker color for bars */
+    background: var(--text-primary);
     margin: 3px 0;
     transition: 0.3s;
+    border-radius: 2px;
 }
 
-/* Hero Section */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Hero Section - GitHub Light Style */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, #eceff4 0%, #e5e9f0 50%, #d8dee9 100%); /* Light gradient */
+    background: var(--bg-primary);
+    padding: 64px 0;
 }
 
-/* Floating Shapes */
+/* Floating Shapes - GitHub Light Style */
 .floating-shapes {
     position: absolute;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .shape {
     position: absolute;
     border-radius: 50%;
-    background: linear-gradient(45deg, rgba(43, 142, 227, 0.15), rgba(122, 70, 195, 0.15)); /* Accent with transparency */
-    backdrop-filter: blur(15px);
-    animation: float 15s ease-in-out infinite;
-    border: 1px solid rgba(0, 0, 0, 0.1); /* Darker border for light background */
-    box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.15), /* Lighter shadow for light background */
-        inset 0 2px 4px rgba(0, 0, 0, 0.05); /* Lighter inset shadow */
+    background: radial-gradient(circle, rgba(var(--accent-blue-rgb), 0.06), transparent 70%);
+    animation: float 20s ease-in-out infinite;
+    border: 1px solid rgba(var(--accent-blue-rgb), 0.08);
 }
 
-.shape::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, rgba(43, 142, 227, 0.3), rgba(122, 70, 195, 0.3)); /* Accent with transparency */
+.shape-1 {
+    width: 200px;
+    height: 200px;
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 25s;
+}
+
+.shape-2 {
+    width: 150px;
+    height: 150px;
+    top: 60%;
+    right: 15%;
+    animation-delay: 5s;
+    animation-duration: 30s;
+}
+
+.shape-3 {
+    width: 100px;
+    height: 100px;
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 10s;
+    animation-duration: 22s;
+}
+
+.shape-4 {
+    width: 120px;
+    height: 120px;
+    top: 30%;
+    right: 30%;
+    animation-delay: 15s;
+    background: linear-gradient(45deg, rgba(var(--accent-blue-rgb), 0.3), rgba(var(--accent-purple-rgb), 0.3)); /* Accent with transparency */
     border-radius: 50%;
     z-index: -1;
     filter: blur(8px);
@@ -423,9 +463,9 @@ body {
 
 /* Glassmorphism Card */
 .hero-card {
-    background: rgba(236, 239, 244, 0.4); /* Light background, more transparent */
+    background: rgba(var(--bg-secondary-rgb), 0.4); /* Light background, more transparent */
     backdrop-filter: blur(25px);
-    border: 1px solid rgba(122, 70, 195, 0.2); /* Accent border, lighter */
+    border: 1px solid rgba(var(--accent-purple-rgb), 0.2); /* Accent border, lighter */
     border-radius: 30px;
     padding: 3rem 2.5rem;
     box-shadow:
