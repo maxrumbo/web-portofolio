@@ -1,12 +1,11 @@
-# 🌟 Maxwell Rumahorbo - Professional Web Portfolio
-
-A modern, responsive portfolio website showcasing my development journey, projects, and technical expertise.
+---
+# Web Pertama ni bray..
+A professional portfolio website built with modern web technologies including HTML5, CSS3, and vanilla JavaScript.
 
 ## 🚀 Live Demo
 [View Portfolio](https://maxrumbo.github.io/web-portofolio)
 
-## 📋 Overview
-A professional portfolio website built with modern web technologies including HTML5, CSS3, and vanilla JavaScript. Features include:
+## 📋 Overview :
 
 - **3D Hero Section** - Interactive 3D profile card with smooth animations
 - **Code Editor Simulation** - Syntax-highlighted about section with typing effects
@@ -143,14 +142,14 @@ Contributions are welcome! To contribute to this project:
 
 ## 📝 Version History
 
-### v2.0.0 (2025)
+### v2.0.0 (August 2025)
 - ✨ Implemented 3D hero section with interactive profile card
 - 🎨 Added comprehensive dual theme system
 - 📱 Enhanced mobile responsiveness and touch interactions
 - 🎭 Integrated advanced CSS animations and transitions
 - 🔧 Restructured codebase for better maintainability
 
-### v1.0.0 (2024)
+### v1.0.0 (July 2025)
 - 🎉 Initial portfolio release
 - 📄 Core portfolio structure implementation
 - 🎨 Dark theme design system
@@ -170,10 +169,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-<div align="center">
 
-**⭐ If this project helps you, please give it a star! ⭐**
-
-Made with ❤️ by [Maxwell Rumahorbo](https://github.com/maxrumbo)
-
-</div>
