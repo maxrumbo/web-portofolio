@@ -1,5 +1,5 @@
----
-# Web Pertama ni brayy
+# Web Portfo ala ala
+
 A professional portfolio website built with modern web technologies including HTML5, CSS3, and vanilla JavaScript.
 
 ## 🚀 Live Demo
@@ -156,12 +156,6 @@ Contributions are welcome! To contribute to this project:
 - 📱 Basic responsive design
 
 ## 📞 Contact Information
-
-**Maxwell Rumahorbo**
-- 📧 Email: maxwell.rumahorbo@example.com
-- 💼 LinkedIn: [maxwell-rumahorbo](https://linkedin.com/in/maxwell-rumahorbo)
-- 🐱 GitHub: [@maxrumbo](https://github.com/maxrumbo)
-- 📱 WhatsApp: +62 xxx-xxxx-xxxx
 
 ## 📜 License
 
