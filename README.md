@@ -1,4 +1,4 @@
-# Maxwell Rumahorbo - Professional Web Portfolio
+# Web Pertama ni bray
 
 A modern, responsive portfolio website showcasing my development journey, projects, and technical expertise.
 
@@ -131,14 +131,14 @@ Contributions are welcome! To contribute to this project:
 
 ## 📝 Version History
 
-### v2.0.0 (2025)
+### v2.0.0 (August 2025)
 - ✨ Implemented 3D hero section with interactive profile card
 - 🎨 Added comprehensive dual theme system
 - 📱 Enhanced mobile responsiveness and touch interactions
 - 🎭 Integrated advanced CSS animations and transitions
 - 🔧 Restructured codebase for better maintainability
 
-### v1.0.0 (2024)
+### v1.0.0 (July 2025)
 - 🎉 Initial portfolio release
 - 📄 Core portfolio structure implementation
 - 🎨 Dark theme design system
@@ -150,11 +150,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-<div align="center">
 
-**⭐ If this project helps you, please give it a star! ⭐**
-
-Made with ❤️ by [Maxwell Rumahorbo](https://github.com/maxrumbo)
-
-</div>
 
