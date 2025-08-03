@@ -729,22 +729,32 @@ buttons3d.forEach(button => {
     });
 });
 
-// Social Links 3D Animation
-const socialLinks3d = document.querySelectorAll('.social-link-3d');
-socialLinks3d.forEach((link, index) => {
-    link.addEventListener('mouseenter', () => {
-        link.style.transform = 'scale(1.2) rotateY(360deg)';
+// Pixel Action Buttons Animation - Minecraft Style
+const pixelActionBtns = document.querySelectorAll('.pixel-action-btn');
+pixelActionBtns.forEach((btn, index) => {
+    // Simple minecraft click sound effect (visual)
+    btn.addEventListener('click', (e) => {
+        // Simple scale effect
+        btn.style.transform = 'translateY(0) scale(0.95)';
+        setTimeout(() => {
+            btn.style.transform = 'translateY(-1px) scale(1)';
+        }, 100);
     });
     
-    link.addEventListener('mouseleave', () => {
-        link.style.transform = 'scale(1) rotateY(0deg)';
+    // Simple hover effects
+    btn.addEventListener('mouseenter', () => {
+        btn.style.transform = 'translateY(-1px)';
     });
     
-    // Initial animation delay
+    btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translateY(0)';
+    });
+    
+    // Initial simple animation
     setTimeout(() => {
-        link.style.opacity = '1';
-        link.style.transform = 'translateY(0) scale(1)';
-    }, 1000 + (index * 100));
+        btn.style.opacity = '1';
+        btn.style.transform = 'translateY(0) scale(1)';
+    }, 1200 + (index * 100));
 });
 
 // Floating Animation for Geometric Shapes
