@@ -8,8 +8,8 @@ A modern and responsive portfolio website built with HTML5, CSS3, and vanilla Ja
 - Smooth scrolling navigation
 - Interactive animations and effects
 - Contact form with validation
-- Mobile hamburger menu
 - Modern gradient UI design
+- Toggle for dark/light mode
 
 ## Demo
 
