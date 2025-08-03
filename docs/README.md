@@ -31,8 +31,6 @@ git clone https://github.com/maxrumbo/web-portofolio.git
 
 2. Open `index.html` in your browser
 
-3. Customize the content with your own information
-
 ## Sections
 
 - **Navigation** - Fixed navbar with smooth scrolling
