@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once 'config.php';
 
 // Redirect if already logged in
 if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
@@ -15,16 +14,14 @@ if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     
-    // Authenticate user with database
-    $user = authenticateUser($username, $password);
-    
-    if ($user) {
+    // Simple hardcoded login
+    if ($username === 'admin' && $password === 'admin123') {
         $_SESSION['admin_logged_in'] = true;
-        $_SESSION['admin_username'] = $user['username'];
-        $_SESSION['admin_fullname'] = $user['full_name'];
-        $_SESSION['admin_email'] = $user['email'];
-        $_SESSION['admin_role'] = $user['role'];
-        $_SESSION['admin_id'] = $user['id'];
+        $_SESSION['admin_username'] = 'admin';
+        $_SESSION['admin_fullname'] = 'Maxwell Rumahorbo';
+        $_SESSION['admin_email'] = 'maxrumbo@gmail.com';
+        $_SESSION['admin_role'] = 'admin';
+        $_SESSION['admin_id'] = 1;
         header('Location: dashboard.php');
         exit();
     } else {
