@@ -10,6 +10,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        function navigateToAdmin() {
+            try {
+                // Try window.location first
+                window.location.replace('http://localhost/web-portofolio/admin/login.php');
+            } catch (e) {
+                // Fallback to window.open
+                window.open('http://localhost/web-portofolio/admin/login.php', '_self');
+            }
+        }
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -869,6 +880,11 @@
             <div class="footer-code">
                 <span class="code-line">printf("© maxrumbo. Made with Pride!");</span>
                 <span class="output-line">© maxrumbo. Made with Pride!</span>
+            </div>
+            <div class="footer-admin">
+                <div class="admin-link" onclick="navigateToAdmin()">
+                    <i class="fas fa-cog"></i>
+                </div>
             </div>
         </div>
     </footer>

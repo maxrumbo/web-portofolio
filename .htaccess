@@ -1,0 +1,12 @@
+AddType application/x-httpd-php .php
+DirectoryIndex index.html index.php
+
+# Ensure PHP files are processed
+<Files "*.php">
+    ForceType application/x-httpd-php
+</Files>
+
+# Prevent direct download of PHP files
+<IfModule mod_mime.c>
+    AddHandler application/x-httpd-php .php
+</IfModule>

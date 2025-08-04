@@ -43,8 +43,8 @@ if (isset($_POST['login'])) {
     <div class="login-container">
         <div class="login-card">
             <div class="login-header">
-                <i class="fas fa-lock"></i>
-                <h2>Admin Login</h2>
+                <i class="fas fa-user-shield"></i>
+                <h2>Khusus Panitia</h2>
                 <p>Maxwell Portfolio Dashboard</p>
             </div>
             

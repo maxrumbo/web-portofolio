@@ -187,3 +187,40 @@ body {
         font-size: 2.5rem;
     }
 }
+
+/* Dashboard specific styles */
+.dashboard-header-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.dashboard-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 5px;
+    white-space: nowrap;
+    min-width: 140px;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .dashboard-header-actions {
+        gap: 15px;
+        justify-content: center;
+    }
+    
+    .dashboard-btn {
+        min-width: 120px;
+        padding: 10px 20px;
+    }
+}

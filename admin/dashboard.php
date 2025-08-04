@@ -35,6 +35,7 @@ $admin_username = $_SESSION['admin_username'];
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 40px;
         }
         
         .welcome-text h1 {
@@ -50,19 +51,30 @@ $admin_username = $_SESSION['admin_username'];
         .header-actions {
             display: flex;
             gap: 15px;
+            align-items: center;
+            justify-content: flex-end;
+            flex-shrink: 0;
         }
         
         .btn {
-            padding: 10px 20px;
+            padding: 8px 16px;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            margin-left: 2px;
+            margin-right: 2px;
+            white-space: nowrap;
+        }
+        
+        .btn-secondary {
+            margin-right: 8px;
         }
         
         .btn-primary {
@@ -119,8 +131,8 @@ $admin_username = $_SESSION['admin_username'];
     <div class="dashboard-container">
         <div class="dashboard-header">
             <div class="welcome-text">
-                <h1>Welcome back, <?php echo htmlspecialchars($admin_username); ?>!</h1>
-                <p>Maxwell Portfolio Admin Dashboard</p>
+                <h1>Welcome Back Ketua!</h1>
+                <p>Selain Admin Dilarang Login</p>
             </div>
             <div class="header-actions">
                 <a href="../index.html" class="btn btn-secondary" target="_blank">

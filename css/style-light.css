@@ -1907,6 +1907,130 @@ section {
     }
 }
 
+/* Footer Admin Link - Light Theme */
+.footer-admin {
+    position: fixed;
+    bottom: 30px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.admin-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 50px;
+}
+
+.admin-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(0, 123, 255, 0.5);
+    border-radius: 50%;
+    color: #007bff;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    cursor: pointer;
+}
+
+.admin-link:hover {
+    background: rgba(0, 123, 255, 0.1);
+    border-color: rgba(0, 123, 255, 0.8);
+    color: #0056b3;
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 30px rgba(0, 123, 255, 0.4);
+}
+
+.admin-link i {
+    font-size: 18px;
+    animation: rotate 4s linear infinite;
+    transition: all 0.3s ease;
+}
+
+.admin-link:hover i {
+    animation: rotateGearFast 0.2s linear infinite;
+    color: #007bff;
+    transform: scale(1.2);
+    filter: brightness(1.5) drop-shadow(0 0 8px rgba(0, 123, 255, 0.6));
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes rotateGearFast {
+    0% { transform: rotate(0deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1.2); }
+}
+
+@keyframes gearPulseLight {
+    0% {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.admin-link i {
+    font-size: 18px;
+    animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.admin-link:hover i {
+    animation: rotateGearLight 0.3s linear infinite;
+    color: #007bff;
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+@keyframes rotateGearLight {
+    0% {
+        transform: rotate(0deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(360deg) scale(1.1);
+    }
+}
+
+/* Animations */
+
+
+
+@keyframes codeGlowLight {
+    0% {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3),
+                    0 0 10px rgba(187, 154, 247, 0.2);
+        border-color: rgba(187, 154, 247, 0.3);
+    }
+    100% {
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5),
+                    0 0 20px rgba(187, 154, 247, 0.5);
+        border-color: rgba(187, 154, 247, 0.6);
+    }
+}
+
+
+
 /* Animations */
 @keyframes fadeInUp {
     from {
