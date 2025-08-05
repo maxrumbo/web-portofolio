@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once 'check_login.php';
 require_once 'config.php';
 ?>
@@ -10,33 +9,34 @@ require_once 'config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin - Portfolio</title>
     <link rel="stylesheet" href="admin-style.css">
-    <style>
-        body {background: #232946; color: #fff; font-family: Arial, sans-serif;}
-        .dashboard-container {max-width: 900px; margin: 40px auto; background: #2a2d3e; border-radius: 12px; padding: 32px 28px; box-shadow: 0 4px 24px #0002;}
-        .dashboard-container h2 {margin-bottom: 24px; text-align: center;}
-        .admin-menu {display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-bottom: 32px;}
-        .admin-menu a {background: #9ece6a; color: #232946; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: background 0.2s;}
-        .admin-menu a:hover {background: #73daca;}
-        .logout-btn {background: #ff5c57 !important; color: #fff !important;}
-        .section-content {margin-top: 32px;}
-    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Style dashboard dipindahkan ke admin-style.css -->
 </head>
-<body>
+<body class="dashboard-admin">
     <div class="dashboard-container">
-        <h2>Dashboard Admin</h2>
+        <div class="dashboard-header">
+            <div class="admin-profile">
+                <div class="admin-avatar">
+                    <img src="../assets/images/profile 2.jpg" alt="Admin Profile">
+                </div>
+                <div class="admin-info">
+                    <span class="admin-name">Maxwell Rumahorbo</span>
+                    <span class="admin-role">Administrator</span>
+                </div>
+            </div>
+        <a href="/web-portofolio/index.html" class="view-portfolio-btn" target="_blank"><i class="fas fa-eye"></i> View Portfolio</a>
+        </div>
         <div class="admin-menu">
-            <a href="edit_hero.php">Edit Hero</a>
-            <a href="edit_about.php">Edit About</a>
-            <a href="edit_skills.php">Edit Skills</a>
-            <a href="edit_projects.php">Edit Projects</a>
-            <a href="edit_experience.php">Edit Experience</a>
-            <a href="edit_certificates.php">Edit Certificates</a>
-            <a href="edit_contact.php">Edit Contact</a>
-            <a href="logout.php" class="logout-btn">Logout</a>
+            <a href="edit_hero.php"><i class="fas fa-user-astronaut"></i> Edit Hero</a>
+            <a href="edit_about.php"><i class="fas fa-user"></i> Edit About</a>
+            <a href="edit_skills.php"><i class="fas fa-code"></i> Edit Skills</a>
+            <a href="edit_projects.php"><i class="fas fa-briefcase"></i> Edit Projects</a>
+            <a href="edit_experience.php"><i class="fas fa-history"></i> Edit Experience</a>
+            <a href="edit_certificates.php"><i class="fas fa-certificate"></i> Edit Certificates</a>
+            <a href="edit_contact.php"><i class="fas fa-envelope"></i> Edit Contact</a>
+            <a href="logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </div>
         <div class="section-content">
-            <p>Silakan pilih menu di atas untuk mengedit konten portofolio Anda.</p>
+            <p>Selamat datang di <b>Dashboard Admin</b>! Silakan pilih menu di atas untuk mengelola konten portofolio Anda.<br>Gunakan tombol <b>View Portfolio</b> untuk melihat hasil perubahan secara langsung.</p>
         </div>
     </div>
-</body>
-</html>
