@@ -155,8 +155,6 @@ Contributions are welcome! To contribute to this project:
 - 🎨 Dark theme design system
 - 📱 Basic responsive design
 
-## 📞 Contact Information
-
 ## 📜 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
