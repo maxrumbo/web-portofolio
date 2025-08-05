@@ -270,6 +270,46 @@ body {
     transform: rotate(360deg);
 }
 
+/* Edit Portfolio Button */
+.edit-portfolio-btn {
+    background: rgba(158, 206, 106, 0.2) !important;
+    border: 1px solid rgba(158, 206, 106, 0.5) !important;
+    color: #9ece6a !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    margin-left: 10px !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    display: none !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    font-family: inherit !important;
+}
+
+.edit-portfolio-btn:hover {
+    background: rgba(158, 206, 106, 0.3) !important;
+    border-color: rgba(158, 206, 106, 0.7) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 15px rgba(158, 206, 106, 0.3) !important;
+}
+
+.edit-portfolio-btn:active {
+    transform: translateY(0) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .edit-portfolio-btn span {
+        display: none;
+    }
+    .edit-portfolio-btn {
+        padding: 8px 12px !important;
+        margin-left: 5px !important;
+    }
+}
+
 /* Navigation Admin Controls */
 .nav-admin-controls {
     display: flex;

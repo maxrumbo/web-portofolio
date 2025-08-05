@@ -36,34 +36,17 @@
         }
         
         function showAdminControls() {
-            // Add admin controls to navigation
-            const navContainer = document.querySelector('.nav-container');
-            const hamburger = document.querySelector('.hamburger');
-            
-            const adminControls = document.createElement('div');
-            adminControls.className = 'nav-admin-controls';
-            adminControls.innerHTML = `
-                <div class="edit-mode-toggle" onclick="toggleEditMode()" title="Edit Portfolio">
-                    <i class="fas fa-edit"></i>
-                </div>
-                <div class="admin-link" onclick="navigateToAdmin()" title="Admin Panel">
-                    <i class="fas fa-cog"></i>
-                </div>
-            `;
-            
-            navContainer.insertBefore(adminControls, hamburger);
-            
-            // Also add to footer for mobile
-            const footerAdmin = document.querySelector('.footer-admin');
-            if (footerAdmin) {
-                const editFooterBtn = document.createElement('div');
-                editFooterBtn.className = 'edit-mode-toggle';
-                editFooterBtn.style.marginLeft = '10px';
-                editFooterBtn.onclick = toggleEditMode;
-                editFooterBtn.innerHTML = '<i class="fas fa-edit"></i>';
-                footerAdmin.appendChild(editFooterBtn);
+            // Show edit button in navigation
+            const editBtn = document.getElementById('editBtn');
+            if (editBtn) {
+                editBtn.style.display = 'flex';
             }
         }
+        
+        // Check admin session on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAdminSession();
+        });
         
         // Check admin session on page load
         document.addEventListener('DOMContentLoaded', function() {
@@ -78,6 +61,11 @@
             <button class="theme-toggle" id="themeToggle">
                 <span id="themeIcon">🌙</span>
                 <span id="themeText">Dark Mode</span>
+            </button>
+            <!-- Admin Edit Button -->
+            <button class="edit-portfolio-btn" id="editBtn" onclick="toggleEditMode()" style="background: rgba(158, 206, 106, 0.2); border: 1px solid rgba(158, 206, 106, 0.5); color: #9ece6a; padding: 8px 16px; border-radius: 6px; margin-left: 10px; cursor: pointer; font-size: 14px; display: none; align-items: center; gap: 8px; font-weight: 500; transition: all 0.3s ease;">
+                <i class="fas fa-edit"></i>
+                <span>Edit Portfolio</span>
             </button>
             <div class="nav-menu" id="nav-menu">
                 <a href="#home" class="nav-link">Home</a>
