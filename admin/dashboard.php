@@ -226,9 +226,9 @@ $admin_username = $_SESSION['admin_username'];
                 <p>Selain Admin Dilarang Login</p>
             </div>
             <div class="header-actions">
-                <a href="../index.html" class="btn btn-secondary" target="_blank">
-                    <i class="fas fa-external-link-alt"></i>
-                    View Portfolio
+                <a href="portfolio-admin.php" class="btn btn-secondary" target="_blank">
+                    <i class="fas fa-eye"></i>
+                    View Portfolio (Admin)
                 </a>
                 <a href="edit-portfolio.php" class="btn btn-accent">
                     <i class="fas fa-edit"></i>

@@ -20,6 +20,55 @@
                 window.open('http://localhost/web-portofolio/admin/login.php', '_self');
             }
         }
+        
+        // Check if user is admin (session check)
+        function checkAdminSession() {
+            fetch('admin/check-session.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.isAdmin) {
+                        showAdminControls();
+                    }
+                })
+                .catch(error => {
+                    console.log('No admin session found');
+                });
+        }
+        
+        function showAdminControls() {
+            // Add admin controls to navigation
+            const navContainer = document.querySelector('.nav-container');
+            const hamburger = document.querySelector('.hamburger');
+            
+            const adminControls = document.createElement('div');
+            adminControls.className = 'nav-admin-controls';
+            adminControls.innerHTML = `
+                <div class="edit-mode-toggle" onclick="toggleEditMode()" title="Edit Portfolio">
+                    <i class="fas fa-edit"></i>
+                </div>
+                <div class="admin-link" onclick="navigateToAdmin()" title="Admin Panel">
+                    <i class="fas fa-cog"></i>
+                </div>
+            `;
+            
+            navContainer.insertBefore(adminControls, hamburger);
+            
+            // Also add to footer for mobile
+            const footerAdmin = document.querySelector('.footer-admin');
+            if (footerAdmin) {
+                const editFooterBtn = document.createElement('div');
+                editFooterBtn.className = 'edit-mode-toggle';
+                editFooterBtn.style.marginLeft = '10px';
+                editFooterBtn.onclick = toggleEditMode;
+                editFooterBtn.innerHTML = '<i class="fas fa-edit"></i>';
+                footerAdmin.appendChild(editFooterBtn);
+            }
+        }
+        
+        // Check admin session on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAdminSession();
+        });
     </script>
 </head>
 <body>
@@ -884,9 +933,6 @@
             <div class="footer-admin">
                 <div class="admin-link" onclick="navigateToAdmin()">
                     <i class="fas fa-cog"></i>
-                </div>
-                <div class="edit-mode-toggle" onclick="toggleEditMode()" style="margin-left: 10px;">
-                    <i class="fas fa-edit"></i>
                 </div>
             </div>
         </div>
