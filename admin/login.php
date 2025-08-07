@@ -18,28 +18,110 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background: #232946; color: #fff; font-family: Arial, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; }
-        .login-box { background: #16161a; padding: 32px 28px; border-radius: 10px; box-shadow: 0 2px 16px #0002; min-width: 320px; }
-        .login-box h2 { margin-bottom: 18px; }
-        .login-box input { width: 100%; padding: 10px; margin-bottom: 14px; border-radius: 6px; border: 1px solid #7dcfff; background: #232946; color: #fff; }
-        .login-box button { width: 100%; padding: 10px; background: #7dcfff; color: #232946; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
-        .error { color: #ff5c57; margin-bottom: 10px; }
+        :root {
+            --primary: #7dcfff;
+            --accent: #9ece6a;
+            --danger: #ff5c57;
+            --bg: #232946;
+            --card: #16161aee;
+            --input: #232946;
+            --radius: 16px;
+        }
+        body {
+            background: var(--bg);
+            color: #fff;
+            font-family: 'Fira Code', 'Arial', monospace;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-card {
+            background: var(--card);
+            box-shadow: 0 8px 32px #0005;
+            border-radius: var(--radius);
+            padding: 40px 32px 32px 32px;
+            min-width: 340px;
+            max-width: 95vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1.5px solid var(--primary);
+        }
+        .login-card .icon {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .login-card h2 {
+            margin-bottom: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .login-card input {
+            width: 100%;
+            padding: 13px 14px;
+            margin-bottom: 16px;
+            border-radius: 8px;
+            border: 1.5px solid var(--primary);
+            background: var(--input);
+            color: #fff;
+            font-size: 1rem;
+            transition: border 0.2s;
+        }
+        .login-card input:focus {
+            outline: none;
+            border: 1.5px solid var(--accent);
+        }
+        .login-card button {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: #232946;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .login-card button:hover {
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            color: #fff;
+        }
+        .error {
+            color: var(--danger);
+            margin-bottom: 12px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .login-footer {
+            margin-top: 18px;
+            color: #a9b1d6;
+            font-size: 0.95rem;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <form class="login-box" method="post">
-        <h2>Login Admin</h2>
+    <form class="login-card" method="post" autocomplete="off">
+        <div class="icon"><i class="fas fa-user-shield"></i></div>
+        <h2>Admin Login</h2>
         <?php if ($error) echo '<div class="error">'.$error.'</div>'; ?>
         <input type="text" name="username" placeholder="Username" required autofocus>
         <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Login</button>
+        <button type="submit"><i class="fas fa-sign-in-alt"></i> Login</button>
+        <div class="login-footer">&copy; maxrumbo | Portfolio Admin</div>
     </form>
 </body>
 </html>

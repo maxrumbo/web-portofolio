@@ -12,26 +12,159 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] !== true) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Edit Portfolio</title>
-    <link rel="stylesheet" href="../css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        .edit-btn { background: #7dcfff; color: #232946; border: none; border-radius: 6px; padding: 6px 16px; margin-left: 10px; cursor: pointer; font-size: 14px; font-weight: 500; transition: all 0.3s; }
-        .edit-btn i { margin-right: 6px; }
-        .save-btn { background: #9ece6a; color: #232946; border: none; border-radius: 6px; padding: 6px 16px; margin-left: 10px; cursor: pointer; font-size: 14px; font-weight: 500; transition: all 0.3s; }
-        .cancel-btn { background: #ff5c57; color: #fff; border: none; border-radius: 6px; padding: 6px 16px; margin-left: 10px; cursor: pointer; font-size: 14px; font-weight: 500; transition: all 0.3s; }
+        :root {
+            --primary: #7dcfff;
+            --accent: #9ece6a;
+            --danger: #ff5c57;
+            --bg: #232946;
+            --card: #16161aee;
+            --radius: 16px;
+        }
+        body {
+            background: var(--bg);
+            color: #fff;
+            font-family: 'Fira Code', 'Arial', monospace;
+            margin: 0;
+        }
+        .admin-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--card);
+            padding: 24px 40px 18px 40px;
+            border-bottom: 2px solid var(--primary);
+            box-shadow: 0 4px 24px #0003;
+        }
+        .admin-header .admin-info {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .admin-header .avatar {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            border: 2.5px solid var(--primary);
+            object-fit: cover;
+            background: #232946;
+        }
+        .admin-header .admin-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .admin-header .logout-btn {
+            background: var(--danger);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .admin-header .logout-btn:hover {
+            background: #ff7c7c;
+        }
+        .dashboard-title {
+            text-align: center;
+            margin: 32px 0 18px 0;
+            font-size: 2.1rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--primary);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto 40px auto;
+            padding: 0 16px;
+        }
+        .admin-section {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: 0 2px 16px #0002;
+            margin-bottom: 36px;
+            padding: 28px 28px 18px 28px;
+            border: 1.5px solid var(--primary);
+            position: relative;
+        }
+        .admin-section h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        .admin-section h2 i {
+            color: var(--primary);
+        }
+        .edit-btn, .save-btn, .cancel-btn {
+            border: none;
+            border-radius: 8px;
+            padding: 7px 18px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .edit-btn { background: var(--primary); color: #232946; }
+        .edit-btn:hover { background: #a9b1d6; color: #232946; }
+        .save-btn { background: var(--accent); color: #232946; }
+        .save-btn:hover { background: #baffb8; color: #232946; }
+        .cancel-btn { background: var(--danger); color: #fff; }
+        .cancel-btn:hover { background: #ff7c7c; color: #fff; }
         .file-input { margin-top: 8px; }
-        .logout { float: right; background: #ff5c57; color: #fff; }
-        .admin-section { position: relative; margin-bottom: 40px; border: 1px solid #7dcfff; border-radius: 10px; padding: 24px; background: #16161a; }
-        .admin-section h2 { display: flex; align-items: center; justify-content: space-between; }
-        .admin-section .edit-form { margin-top: 18px; }
+        .edit-form label {
+            color: #a9b1d6;
+            font-weight: 500;
+            margin-top: 10px;
+            display: block;
+        }
+        .edit-form input, .edit-form textarea {
+            width: 100%;
+            padding: 11px 12px;
+            margin-bottom: 10px;
+            border-radius: 7px;
+            border: 1.5px solid var(--primary);
+            background: #232946;
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border 0.2s;
+        }
+        .edit-form input:focus, .edit-form textarea:focus {
+            outline: none;
+            border: 1.5px solid var(--accent);
+        }
+        @media (max-width: 700px) {
+            .admin-header { flex-direction: column; gap: 12px; padding: 18px 10px; }
+            .dashboard-title { font-size: 1.3rem; }
+            .container { padding: 0 2vw; }
+            .admin-section { padding: 16px 6vw 10px 6vw; }
+        }
     </style>
 </head>
 <body>
-    <form method="post" action="logout.php" style="display:inline; float:right; margin: 20px;">
-        <button class="logout" type="submit">Logout</button>
-    </form>
-    <h1 style="text-align:center; margin-top: 30px;">Admin Dashboard - Edit Portfolio</h1>
-    <div class="container" style="max-width: 1000px; margin: 40px auto;">
+    <div class="admin-header">
+        <div class="admin-info">
+            <img src="../assets/images/profile 2.jpg" alt="Admin" class="avatar">
+            <span class="admin-name">Maxwell Rumahorbo</span>
+        </div>
+        <form method="post" action="logout.php" style="margin:0;">
+            <button class="logout-btn" type="submit"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </form>
+    </div>
+    <div class="dashboard-title"><i class="fas fa-cogs"></i> Admin Dashboard - Edit Portfolio</div>
+    <div class="container">
         <!-- Hero Section -->
         <div class="admin-section" id="admin-hero">
             <h2>Hero/Profile <button class="edit-btn" onclick="editSection('hero')"><i class="fas fa-edit"></i>Edit</button></h2>
