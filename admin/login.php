@@ -121,6 +121,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" name="username" placeholder="Username" required autofocus>
         <input type="password" name="password" placeholder="Password" required>
         <button type="submit"><i class="fas fa-sign-in-alt"></i> Login</button>
+        <button type="button" onclick="window.location.href='../index.html'" style="margin-top:10px;background:transparent;color:var(--primary);border:1.5px solid var(--primary);font-weight:600;">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+        </button>
         <div class="login-footer">&copy; maxrumbo | Portfolio Admin</div>
     </form>
 </body>

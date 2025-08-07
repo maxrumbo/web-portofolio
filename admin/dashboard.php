@@ -159,36 +159,45 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] !== true) {
             <img src="../assets/images/profile 2.jpg" alt="Admin" class="avatar">
             <span class="admin-name">Maxwell Rumahorbo</span>
         </div>
-        <form method="post" action="logout.php" style="margin:0;">
-            <button class="logout-btn" type="submit"><i class="fas fa-sign-out-alt"></i> Logout</button>
-        </form>
+        <div style="display:flex;gap:10px;align-items:center;">
+            <button class="logout-btn" type="button" onclick="showPreview()" style="background:var(--primary);color:#232946;"><i class="fas fa-eye"></i> Preview</button>
+            <form method="post" action="logout.php" style="margin:0;display:inline;">
+                <button class="logout-btn" type="submit"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </form>
+        </div>
     </div>
     <div class="dashboard-title"><i class="fas fa-cogs"></i> Admin Dashboard - Edit Portfolio</div>
     <div class="container">
-        <!-- Hero Section -->
+        <!-- Hero Section (Front & Back) -->
         <div class="admin-section" id="admin-hero">
-            <h2>Hero/Profile <button class="edit-btn" onclick="editSection('hero')"><i class="fas fa-edit"></i>Edit</button></h2>
-            <div id="hero-content">
-                <b>Nama:</b> Maxwell Rumahorbo<br>
-                <b>Role:</b> Information Systems Student<br>
-                <b>Department:</b> Information Technology<br>
-                <b>ID:</b> 2024.DEV.001<br>
-                <b>Foto Profil:</b> <img src="../assets/images/profile 2.jpg" alt="Profile" style="height:60px;vertical-align:middle;"> <br>
-            </div>
-            <form id="hero-form" class="edit-form" style="display:none;" enctype="multipart/form-data" method="post" action="save-portfolio.php">
+            <h2><i class="fas fa-id-card"></i> Hero/Profile</h2>
+            <form id="hero-form" class="edit-form" enctype="multipart/form-data" method="post" action="save-portfolio.php">
                 <input type="hidden" name="section" value="hero">
-                <label>Nama Lengkap</label>
-                <input type="text" name="name" value="Maxwell Rumahorbo">
-                <label>Role/Profesi</label>
-                <input type="text" name="role" value="Information Systems Student">
-                <label>Department</label>
-                <input type="text" name="department" value="Information Technology">
-                <label>ID</label>
-                <input type="text" name="employee_id" value="2024.DEV.001">
-                <label>Foto Profil (jpg/png)</label>
-                <input type="file" name="profile_image" class="file-input" accept="image/*">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+                    <div>
+                        <label>Nama Lengkap</label>
+                        <input type="text" name="name" value="Maxwell Rumahorbo">
+                        <label>Role/Profesi</label>
+                        <input type="text" name="role" value="Information Systems Student">
+                        <label>Department</label>
+                        <input type="text" name="department" value="Information Technology">
+                        <label>ID</label>
+                        <input type="text" name="employee_id" value="2024.DEV.001">
+                        <label>Foto Profil (jpg/png)</label>
+                        <input type="file" name="profile_image" class="file-input" accept="image/*">
+                    </div>
+                    <div>
+                        <label>Tahun Berlaku (Depan)</label>
+                        <input type="text" name="valid_thru" value="12/2027">
+                        <label>Tahun Berlaku (Belakang)</label>
+                        <input type="text" name="valid_back" value="31 DES 2027">
+                        <label>Statistik (Belakang)</label>
+                        <input type="text" name="stat1" value="2024|Graduate">
+                        <input type="text" name="stat2" value="10+|Projects">
+                        <input type="text" name="stat3" value="IT Del|University">
+                    </div>
+                </div>
                 <button class="save-btn" type="submit"><i class="fas fa-save"></i>Simpan</button>
-                <button class="cancel-btn" type="button" onclick="cancelEdit('hero')">Batal</button>
             </form>
         </div>
         <!-- About Section -->
@@ -239,36 +248,134 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] !== true) {
                 <button class="cancel-btn" type="button" onclick="cancelEdit('projects')">Batal</button>
             </form>
         </div>
-        <!-- Experience Section -->
+        <!-- Experience Section (Detail) -->
         <div class="admin-section" id="admin-experience">
-            <h2>Experience <button class="edit-btn" onclick="editSection('experience')"><i class="fas fa-edit"></i>Edit</button></h2>
-            <div id="experience-content">
-                Full Stack Developer Intern, Web Developer, IT Support Assistant, Programming Tutor, Software Development Intern
-            </div>
-            <form id="experience-form" class="edit-form" style="display:none;" method="post" action="save-portfolio.php">
+            <h2><i class="fas fa-briefcase"></i> Experience</h2>
+            <form id="experience-form" class="edit-form" method="post" action="save-portfolio.php">
                 <input type="hidden" name="section" value="experience">
-                <label>Daftar Pengalaman (pisahkan dengan koma)</label>
-                <input type="text" name="experiences" value="Full Stack Developer Intern, Web Developer, IT Support Assistant, Programming Tutor, Software Development Intern">
+                <div style="display:grid;gap:18px;">
+                    <div style="border:1px solid var(--primary);border-radius:8px;padding:12px;">
+                        <label>Periode</label>
+                        <input type="text" name="exp_period[]" value="2024 - Present">
+                        <label>Posisi</label>
+                        <input type="text" name="exp_title[]" value="Full Stack Developer Intern">
+                        <label>Tempat</label>
+                        <input type="text" name="exp_place[]" value="Tech Company">
+                        <label>Deskripsi</label>
+                        <textarea name="exp_desc[]" rows="2">Developing web applications using modern technologies including React, Node.js, and MongoDB. Collaborating with senior developers to deliver high-quality software solutions.</textarea>
+                    </div>
+                    <div style="border:1px solid var(--primary);border-radius:8px;padding:12px;">
+                        <label>Periode</label>
+                        <input type="text" name="exp_period[]" value="2023 - 2024">
+                        <label>Posisi</label>
+                        <input type="text" name="exp_title[]" value="Web Developer">
+                        <label>Tempat</label>
+                        <input type="text" name="exp_place[]" value="Freelance">
+                        <label>Deskripsi</label>
+                        <textarea name="exp_desc[]" rows="2">Created responsive websites for small businesses and personal clients. Focused on modern design principles and user experience optimization.</textarea>
+                    </div>
+                    <div style="border:1px solid var(--primary);border-radius:8px;padding:12px;">
+                        <label>Periode</label>
+                        <input type="text" name="exp_period[]" value="2023">
+                        <label>Posisi</label>
+                        <input type="text" name="exp_title[]" value="IT Support Assistant">
+                        <label>Tempat</label>
+                        <input type="text" name="exp_place[]" value="University IT Department">
+                        <label>Deskripsi</label>
+                        <textarea name="exp_desc[]" rows="2">Provided technical support to students and faculty. Maintained computer systems and network infrastructure.</textarea>
+                    </div>
+                    <div style="border:1px solid var(--primary);border-radius:8px;padding:12px;">
+                        <label>Periode</label>
+                        <input type="text" name="exp_period[]" value="2022 - 2023">
+                        <label>Posisi</label>
+                        <input type="text" name="exp_title[]" value="Programming Tutor">
+                        <label>Tempat</label>
+                        <input type="text" name="exp_place[]" value="Institut Teknologi Del">
+                        <label>Deskripsi</label>
+                        <textarea name="exp_desc[]" rows="2">Assisted junior students in learning programming fundamentals including algorithms, data structures, and object-oriented programming concepts.</textarea>
+                    </div>
+                    <div style="border:1px solid var(--primary);border-radius:8px;padding:12px;">
+                        <label>Periode</label>
+                        <input type="text" name="exp_period[]" value="2022">
+                        <label>Posisi</label>
+                        <input type="text" name="exp_title[]" value="Software Development Intern">
+                        <label>Tempat</label>
+                        <input type="text" name="exp_place[]" value="Local Startup">
+                        <label>Deskripsi</label>
+                        <textarea name="exp_desc[]" rows="2">Participated in agile development process, contributed to mobile app development, and learned industry best practices in software engineering.</textarea>
+                    </div>
+                </div>
                 <button class="save-btn" type="submit"><i class="fas fa-save"></i>Simpan</button>
-                <button class="cancel-btn" type="button" onclick="cancelEdit('experience')">Batal</button>
             </form>
         </div>
-        <!-- Certificates Section -->
+        <!-- Certificates Section (Detail) -->
         <div class="admin-section" id="admin-certificates">
-            <h2>Certificates <button class="edit-btn" onclick="editSection('certificates')"><i class="fas fa-edit"></i>Edit</button></h2>
-            <div id="certificates-content">
-                Full Stack Web Development, JavaScript Algorithms, React Development, Database Management, Responsive Web Design, Git & Version Control
-            </div>
-            <form id="certificates-form" class="edit-form" style="display:none;" enctype="multipart/form-data" method="post" action="save-portfolio.php">
+            <h2><i class="fas fa-certificate"></i> Certificates</h2>
+            <form id="certificates-form" class="edit-form" enctype="multipart/form-data" method="post" action="save-portfolio.php">
                 <input type="hidden" name="section" value="certificates">
-                <label>Tambah Sertifikat</label>
-                <input type="text" name="certificate_title" placeholder="Judul Sertifikat">
-                <input type="text" name="certificate_issuer" placeholder="Penerbit">
-                <input type="text" name="certificate_date" placeholder="Tanggal (misal: Desember 2023)">
-                <label>Upload File Sertifikat (PDF/JPG/PNG)</label>
-                <input type="file" name="certificate_file" class="file-input" accept="application/pdf,image/*">
-                <button class="save-btn" type="submit"><i class="fas fa-plus"></i>Tambah Sertifikat</button>
-                <button class="cancel-btn" type="button" onclick="cancelEdit('certificates')">Batal</button>
+                <div style="display:grid;gap:18px;">
+                    <div style="border:1px solid var(--primary);border-radius:8px;padding:12px;">
+                        <label>Judul Sertifikat</label>
+                        <input type="text" name="certificate_title[]" value="Full Stack Web Development">
+                        <label>Penerbit</label>
+                        <input type="text" name="certificate_issuer[]" value="Codecademy">
+                        <label>Tanggal</label>
+                        <input type="text" name="certificate_date[]" value="December 2023">
+                        <label>File Sertifikat (PDF/JPG/PNG)</label>
+                        <input type="file" name="certificate_file[]" class="file-input" accept="application/pdf,image/*">
+                    </div>
+                    <div style="border:1px solid var(--primary);border-radius:8px;padding:12px;">
+                        <label>Judul Sertifikat</label>
+                        <input type="text" name="certificate_title[]" value="JavaScript Algorithms">
+                        <label>Penerbit</label>
+                        <input type="text" name="certificate_issuer[]" value="FreeCodeCamp">
+                        <label>Tanggal</label>
+                        <input type="text" name="certificate_date[]" value="October 2023">
+                        <label>File Sertifikat (PDF/JPG/PNG)</label>
+                        <input type="file" name="certificate_file[]" class="file-input" accept="application/pdf,image/*">
+                    </div>
+                    <div style="border:1px solid var(--primary);border-radius:8px;padding:12px;">
+                        <label>Judul Sertifikat</label>
+                        <input type="text" name="certificate_title[]" value="React Development">
+                        <label>Penerbit</label>
+                        <input type="text" name="certificate_issuer[]" value="Udemy">
+                        <label>Tanggal</label>
+                        <input type="text" name="certificate_date[]" value="September 2023">
+                        <label>File Sertifikat (PDF/JPG/PNG)</label>
+                        <input type="file" name="certificate_file[]" class="file-input" accept="application/pdf,image/*">
+                    </div>
+                    <div style="border:1px solid var(--primary);border-radius:8px;padding:12px;">
+                        <label>Judul Sertifikat</label>
+                        <input type="text" name="certificate_title[]" value="Database Management">
+                        <label>Penerbit</label>
+                        <input type="text" name="certificate_issuer[]" value="Oracle Academy">
+                        <label>Tanggal</label>
+                        <input type="text" name="certificate_date[]" value="August 2023">
+                        <label>File Sertifikat (PDF/JPG/PNG)</label>
+                        <input type="file" name="certificate_file[]" class="file-input" accept="application/pdf,image/*">
+                    </div>
+                    <div style="border:1px solid var(--primary);border-radius:8px;padding:12px;">
+                        <label>Judul Sertifikat</label>
+                        <input type="text" name="certificate_title[]" value="Responsive Web Design">
+                        <label>Penerbit</label>
+                        <input type="text" name="certificate_issuer[]" value="FreeCodeCamp">
+                        <label>Tanggal</label>
+                        <input type="text" name="certificate_date[]" value="July 2023">
+                        <label>File Sertifikat (PDF/JPG/PNG)</label>
+                        <input type="file" name="certificate_file[]" class="file-input" accept="application/pdf,image/*">
+                    </div>
+                    <div style="border:1px solid var(--primary);border-radius:8px;padding:12px;">
+                        <label>Judul Sertifikat</label>
+                        <input type="text" name="certificate_title[]" value="Git & Version Control">
+                        <label>Penerbit</label>
+                        <input type="text" name="certificate_issuer[]" value="GitHub Learning Lab">
+                        <label>Tanggal</label>
+                        <input type="text" name="certificate_date[]" value="June 2023">
+                        <label>File Sertifikat (PDF/JPG/PNG)</label>
+                        <input type="file" name="certificate_file[]" class="file-input" accept="application/pdf,image/*">
+                    </div>
+                </div>
+                <button class="save-btn" type="submit"><i class="fas fa-save"></i>Simpan</button>
             </form>
         </div>
         <!-- Contact Section -->
@@ -296,13 +403,8 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] !== true) {
         </div>
     </div>
     <script>
-        function editSection(section) {
-            document.getElementById(section+'-form').style.display = 'block';
-            document.getElementById(section+'-content').style.display = 'none';
-        }
-        function cancelEdit(section) {
-            document.getElementById(section+'-form').style.display = 'none';
-            document.getElementById(section+'-content').style.display = 'block';
+        function showPreview() {
+            window.open('../index.html', '_blank');
         }
     </script>
 </body>

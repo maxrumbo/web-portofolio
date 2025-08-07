@@ -1,106 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maxwell Rumahorbo - Portfolio</title>
-    <!-- Theme CSS - Will be dynamically managed -->
-    <link id="theme-css" rel="stylesheet" href="css/style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script>
-        function navigateToAdmin() {
-            try {
-                // Try window.location first
-                window.location.replace('http://localhost/web-portofolio/web-portofolio/admin/login.php');
-            } catch (e) {
-                // Fallback to window.open
-                window.open('http://localhost/web-portofolio/web-portofolio/admin/login.php', '_self');
-            }
-        }
-        
-        // Check if user is admin (session check)
-        function checkAdminSession() {
-            fetch('admin/check-session.php')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.isAdmin) {
-                        showAdminControls();
-                    }
-                })
-                .catch(error => {
-                    console.log('No admin session found');
-                });
-        }
-        
-        function showAdminControls() {
-            // Show edit button in navigation
-            const editBtn = document.getElementById('editBtn');
-            if (editBtn) {
-                editBtn.style.display = 'flex';
-            }
-        }
-        
-        // Check admin session on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            checkAdminSession();
-        });
-        
-        // Check admin session on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            checkAdminSession();
-        });
-    </script>
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <button class="theme-toggle" id="themeToggle">
-                <span id="themeIcon">🌙</span>
-                <span id="themeText">Dark Mode</span>
-            </button>
-            <!-- Admin Edit Button -->
-            <button class="edit-portfolio-btn" id="editBtn" onclick="toggleEditMode()" style="background: rgba(158, 206, 106, 0.2); border: 1px solid rgba(158, 206, 106, 0.5); color: #9ece6a; padding: 8px 16px; border-radius: 6px; margin-left: 10px; cursor: pointer; font-size: 14px; display: none; align-items: center; gap: 8px; font-weight: 500; transition: all 0.3s ease;">
-                <i class="fas fa-edit"></i>
-                <span>Edit Portfolio</span>
-            </button>
-            <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#certificates" class="nav-link">Certificates</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            <div class="nav-spacer"></div>
-            <div class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+    <script src="js/script.js"></script>
+    <script src="js/theme-toggle.js"></script>
 
-    <!-- Hero Section - 3D/Parallax Design -->
-    <section id="home" class="hero-3d">
-        <!-- 3D Background Elements -->
-        <div class="parallax-background">
-            <!-- Floating Geometric Shapes -->
-            <div class="floating-geometry">
-                <div class="geo-cube geo-1">
-                    <div class="face front"></div>
-                    <div class="face back"></div>
-                    <div class="face right"></div>
-                    <div class="face left"></div>
-                    <div class="face top"></div>
-                    <div class="face bottom"></div>
-                </div>
-                <div class="geo-pyramid geo-2">
-                    <div class="pyramid-face pyramid-1"></div>
+    <script>
+    // Dinamis: Load data dari portfolio-data.json via PHP
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('admin/get-portfolio.php')
+            .then(res => res.json())
+            .then(data => {
+                // HERO
+                if(data.hero) {
+                    document.querySelector('.profile-avatar img').src = data.hero.profile_image || 'assets/images/profile 2.jpg';
+                    document.querySelector('.name-3d .name-layer:first-child').textContent = (data.hero.name||'').split(' ')[0] || 'Maxwell';
+                    document.querySelector('.name-3d .name-layer:last-child').textContent = (data.hero.name||'').split(' ')[1] || 'Rumahorbo';
+                    document.querySelector('.employee-id').textContent = 'ID: ' + (data.hero.employee_id||'2024.DEV.001');
+                    document.querySelector('.department').textContent = data.hero.department||'Information Technology';
+                    document.getElementById('typingText').textContent = data.hero.role||'Information Systems Student';
+                }
+                // ABOUT
+                if(data.about) {
+                    document.querySelector('.about .code-area .code-line .property').parentNode.querySelector('.string').textContent = '"'+data.about.about+'"';
+                    document.querySelector('.about .editor-content .code-line .string').textContent = '"'+data.about.about+'"';
+                }
+                // SKILLS
+                if(data.skills) {
+                    const skillsArr = (data.skills.skills||'').split(',').map(s=>s.trim());
+                    document.querySelectorAll('.skills-grid .skill-item').forEach((el,i)=>{
+                        if(skillsArr[i]) el.querySelector('h3').textContent = skillsArr[i];
+                    });
+                }
+                // PROJECTS
+                if(data.projects) {
+                    const projects = data.projects;
+                    document.querySelectorAll('.projects-grid .project-card').forEach((el,i)=>{
+                        if(projects[i]) {
+                            el.querySelector('h3').textContent = projects[i].title;
+                            el.querySelector('p').textContent = projects[i].desc;
+                        }
+                    });
+                }
+                // EXPERIENCE
+                if(data.experience && data.experience.experiences) {
+                    const expArr = (data.experience.experiences||'').split(',').map(s=>s.trim());
+                    document.querySelectorAll('.timeline .timeline-item').forEach((el,i)=>{
+                        if(expArr[i]) el.querySelector('h3').textContent = expArr[i];
+                    });
+                }
+                // CERTIFICATES
+                if(data.certificates) {
+                    document.querySelectorAll('.certificates-grid .certificate-card').forEach((el,i)=>{
+                        if(data.certificates[i]) {
+                            el.querySelector('h3').textContent = data.certificates[i].title;
+                            el.querySelector('h4').textContent = data.certificates[i].issuer;
+                            el.querySelector('.certificate-date span').textContent = data.certificates[i].date;
+                        }
+                    });
+                }
+                // CONTACT
+                if(data.contact) {
+                    document.querySelector('.contact-info .app-link[data-app="email"] span').textContent = data.contact.email;
+                    document.querySelector('.contact-info .app-link[data-app="whatsapp"] span').textContent = data.contact.phone;
+                    document.querySelector('.contact-info .app-link[data-app="github"] span').textContent = data.contact.github;
+                    document.querySelector('.contact-info .app-link[data-app="instagram"] span').textContent = data.contact.instagram;
+                }
+            });
+    });
+    </script>
                     <div class="pyramid-face pyramid-2"></div>
                     <div class="pyramid-face pyramid-3"></div>
                     <div class="pyramid-face pyramid-4"></div>
