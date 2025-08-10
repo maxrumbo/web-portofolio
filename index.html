@@ -13,159 +13,177 @@
 </head>
 <body>
     <!-- Topbar -->
-    <header class="topbar">
-        <div class="container">
-            <div class="topbar-content">
-                <div class="logo">
-                    <i class="fas fa-moon" id="theme-toggle" title="Toggle theme" style="cursor:pointer;"></i>
-                </div>
-                <nav class="topbar-nav">
-                    <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#certificates">Certificates</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-            </div>
-        </div>
-    </header>
+    <script>
+    // Footer admin gear: redirect ke login page
+    function navigateToAdmin() {
+        window.location.href = 'admin/login.php';
+    }
 
-    <!-- Main Centered Content -->
-    <main class="main-centered">
-        <!-- ...existing code... -->
-    </main>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #181a27;
-            font-family: 'Fira Code', monospace;
+    // Toast notification
+    function showToast(message, isSuccess = true) {
+        let toast = document.getElementById('custom-toast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.id = 'custom-toast';
+            toast.style.position = 'fixed';
+            toast.style.top = '30px';
+            toast.style.right = '30px';
+            toast.style.zIndex = '9999';
+            toast.style.padding = '16px 28px';
+            toast.style.borderRadius = '8px';
+            toast.style.fontSize = '1rem';
+            toast.style.fontWeight = '600';
+            toast.style.boxShadow = '0 4px 16px rgba(0,0,0,0.15)';
+            toast.style.transition = 'opacity 0.3s';
+            document.body.appendChild(toast);
         }
-        .topbar {
-            width: 100%;
-            background: #23263a; /* default: abu gelap untuk dark theme */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 100;
+        toast.style.background = isSuccess ? 'linear-gradient(90deg,#9ece6a,#73daca)' : 'linear-gradient(90deg,#ff5c57,#ffbd2e)';
+        toast.style.color = isSuccess ? '#1a1b26' : '#fff';
+        toast.textContent = message;
+        toast.style.opacity = '1';
+        setTimeout(() => {
+            toast.style.opacity = '0';
+        }, 2200);
+    }
+
+    // Live Portfolio Editor
+    function toggleEditMode() {
+        document.getElementById('edit-overlay').style.display = 'block';
+        showEditSection('hero');
+    }
+
+    function closeEditMode() {
+        document.getElementById('edit-overlay').style.display = 'none';
+    }
+
+    function showEditSection(section) {
+        // Update tab states
+        document.querySelectorAll('.edit-tab').forEach(tab => {
+            tab.style.background = 'rgba(36, 40, 59, 0.8)';
+            tab.style.color = '#a9b1d6';
+        });
+        document.querySelector(`[data-section="${section}"]`).style.background = 'rgba(125, 207, 255, 0.2)';
+        document.querySelector(`[data-section="${section}"]`).style.color = '#7dcfff';
+
+        // Load section content
+        const editContent = document.getElementById('edit-content');
+
+        switch(section) {
+            case 'hero':
+                editContent.innerHTML = `
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                        </div>
+                    </div>
+                `;
+                break;
+            case 'about':
+                editContent.innerHTML = `
+                    <div>
+                    </div>
+                `;
+                break;
+            case 'skills':
+                editContent.innerHTML = `
+                    <div>
+                    </div>
+                `;
+                break;
+            case 'projects':
+                editContent.innerHTML = `
+                `;
+                break;
         }
-        .topbar .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
-        .topbar-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 64px;
-        }
-        .topbar .logo {
-            color: #7dcfff;
-            font-weight: 700;
-            font-size: 1.3rem;
-            letter-spacing: 1px;
-        }
-        .topbar-nav a {
-            color: #c0caf5;
-            text-decoration: none;
-            margin-left: 24px;
-            font-size: 1rem;
-            transition: color 0.2s;
-        }
-        .topbar-nav a:hover {
-            color: #7dcfff;
-        }
-        .main-centered {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 90px;
-            box-sizing: border-box;
-        }
-        .hero-3d-container {
-            margin: 0 auto 32px auto;
-            width: 100%;
-        }
-        .profile-3d-card {
-            margin: 0 auto 32px auto;
-        }
-        .actions-3d {
-            display: flex;
-            justify-content: flex-start;
-            gap: 24px;
-            margin-bottom: 24px;
-        }
-        .quick-actions {
-            display: flex;
-            justify-content: flex-start;
-            gap: 16px;
-        }
-        .hero-3d-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            margin-top: 0;
-        }
-        .profile-3d-card {
-            margin: 0 auto 24px auto;
-        }
-        .actions-3d {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 18px;
-        }
-        .quick-actions {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
-        .hero-3d-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-        .profile-3d-card {
-            margin: 0 auto 32px auto;
-        }
-        .actions-3d {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin-bottom: 24px;
-        }
-        .quick-actions {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-        }
-        @media (max-width: 700px) {
-            .topbar .container { padding: 0 10px; }
-            .topbar-content { flex-direction: column; height: auto; }
-            .topbar-nav { margin-top: 8px; }
-            .main-centered { padding-top: 20px; }
-        }
-        /* Welcome page (section pertama) latar putih */
-        section:first-of-type {
-            background: #fff !important;
-        }
-        /* Topbar light theme override */
-        body.light-theme .topbar {
-            background: #f5f6fa !important;
-        }
-        /* Warna icon sun agar lebih mirip matahari di light theme */
-        body.light-theme .topbar .logo .fa-sun {
-            color: #ffc300 !important;
-            text-shadow: 0 0 8px #ffe066;
-        }
-    </style>
+    }
+
+    // Contoh fungsi save dengan notifikasi AJAX
+    function savePortfolioChanges() {
+        // Ganti dengan data yang ingin dikirim
+        const formData = new FormData();
+        // formData.append('key', value);
+        fetch('admin/save-portfolio.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showToast(data.message || 'Perubahan berhasil disimpan!', true);
+                // Reload portfolio data agar perubahan langsung tampil
+                if (typeof reloadPortfolioData === 'function') {
+                    reloadPortfolioData();
+                } else {
+                    // fallback: fetch ulang dan update manual (copy dari DOMContentLoaded)
+                    fetch('admin/get-portfolio.php')
+                        .then(res => res.json())
+                        .then(data => {
+                            // HERO
+                            if(data.hero) {
+                                document.querySelector('.profile-avatar img').src = data.hero.profile_image || 'assets/images/profile 2.jpg';
+                                document.querySelector('.name-3d .name-layer:first-child').textContent = (data.hero.name||'').split(' ')[0] || 'Maxwell';
+                                document.querySelector('.name-3d .name-layer:last-child').textContent = (data.hero.name||'').split(' ')[1] || 'Rumahorbo';
+                                document.querySelector('.employee-id').textContent = 'ID: ' + (data.hero.employee_id||'2024.DEV.001');
+                                document.querySelector('.department').textContent = data.hero.department||'Information Technology';
+                                document.getElementById('typingText').textContent = data.hero.role||'Information Systems Student';
+                            }
+                            // ABOUT
+                            if(data.about) {
+                                document.querySelector('.about .code-area .code-line .property').parentNode.querySelector('.string').textContent = '"'+data.about.about+'"';
+                                document.querySelector('.about .editor-content .code-line .string').textContent = '"'+data.about.about+'"';
+                            }
+                            // SKILLS
+                            if(data.skills) {
+                                const skillsArr = (data.skills.skills||'').split(',').map(s=>s.trim());
+                                document.querySelectorAll('.skills-grid .skill-item').forEach((el,i)=>{
+                                    if(skillsArr[i]) el.querySelector('h3').textContent = skillsArr[i];
+                                });
+                            }
+                            // PROJECTS
+                            if(data.projects) {
+                                const projects = data.projects;
+                                document.querySelectorAll('.projects-grid .project-card').forEach((el,i)=>{
+                                    if(projects[i]) {
+                                        el.querySelector('h3').textContent = projects[i].title;
+                                        el.querySelector('p').textContent = projects[i].desc;
+                                    }
+                                });
+                            }
+                            // EXPERIENCE
+                            if(data.experience && data.experience.experiences) {
+                                const expArr = (data.experience.experiences||'').split(',').map(s=>s.trim());
+                                document.querySelectorAll('.timeline .timeline-item').forEach((el,i)=>{
+                                    if(expArr[i]) el.querySelector('h3').textContent = expArr[i];
+                                });
+                            }
+                            // CERTIFICATES
+                            if(data.certificates) {
+                                document.querySelectorAll('.certificates-grid .certificate-card').forEach((el,i)=>{
+                                    if(data.certificates[i]) {
+                                        el.querySelector('h3').textContent = data.certificates[i].title;
+                                        el.querySelector('h4').textContent = data.certificates[i].issuer;
+                                        el.querySelector('.certificate-date span').textContent = data.certificates[i].date;
+                                    }
+                                });
+                            }
+                            // CONTACT
+                            if(data.contact) {
+                                document.querySelector('.contact-info .app-link[data-app="email"] span').textContent = data.contact.email;
+                                document.querySelector('.contact-info .app-link[data-app="whatsapp"] span').textContent = data.contact.phone;
+                                document.querySelector('.contact-info .app-link[data-app="github"] span').textContent = data.contact.github;
+                                document.querySelector('.contact-info .app-link[data-app="instagram"] span').textContent = data.contact.instagram;
+                            }
+                        });
+                }
+            } else {
+                showToast(data.message || 'Gagal menyimpan perubahan!', false);
+            }
+        })
+        .catch(() => {
+            showToast('Terjadi kesalahan koneksi!', false);
+        });
+    }
+    </script>
+    <!-- CSS di atas sudah dipindahkan ke <style> di <head> atau file eksternal -->
     <script>
     // Footer admin gear: redirect ke login page
     function navigateToAdmin() {
