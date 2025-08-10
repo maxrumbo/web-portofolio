@@ -176,7 +176,6 @@ section {
     width: 100vw;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
@@ -185,17 +184,28 @@ section {
 }
 .hero-3d-container {
     width: 100vw;
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0;
     padding: 0;
 }
 .profile-3d-card {
-    margin: 0 auto 32px auto;
-    max-width: 480px;
+    margin: 0 auto;
+    max-width: 420px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #222436;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    padding: 2rem 1.5rem;
+    position: relative;
+    z-index: 2;
+    overflow: visible;
 }
 
 /* Navigation */
@@ -577,19 +587,23 @@ section {
 
 /* Glassmorphism Card */
 .hero-card {
-    background: rgba(26, 27, 38, 0.25);
-    backdrop-filter: blur(25px);
-    border: 1px solid rgba(187, 154, 247, 0.3);
-    border-radius: 30px;
-    padding: 3rem 2.5rem;
-    box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.4),
-        0 0 0 1px rgba(125, 207, 255, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.05);
-    animation: cardSlideIn 1.2s ease-out, cardFloat 6s ease-in-out infinite 2s;
+    background: #222436;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    padding: 2rem 1.5rem;
+    max-width: 420px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    overflow: hidden;
+    z-index: 2;
+    overflow: visible;
+    color: #c0caf5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    word-break: break-word;
+    overflow-wrap: anywhere;
     transition: all 0.3s ease;
 }
 
@@ -780,12 +794,12 @@ section {
 }
 
 .profile-role {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #7dcfff;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     font-weight: 500;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .profile-role::after {
