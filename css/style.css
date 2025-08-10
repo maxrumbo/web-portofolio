@@ -1,3 +1,46 @@
+/* Topbar Styles */
+.topbar {
+    width: 100%;
+    background: #222436;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+.topbar .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+.topbar-nav a {
+    color: #a9b1d6;
+    text-decoration: none;
+    margin-left: 24px;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+.topbar-nav a:hover {
+    color: #7dcfff;
+}
+.topbar .logo {
+    color: #7dcfff;
+    font-size: 1.3rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.topbar #theme-toggle {
+    font-size: 1.2rem;
+    margin-left: 18px;
+    cursor: pointer;
+    color: #ffbd2e;
+    transition: color 0.2s;
+}
+body {
+    padding-top: 64px;
+}
 /* Reset dan Base Styles */
 /* Global Smooth Transitions for Theme Switching */
 * {
