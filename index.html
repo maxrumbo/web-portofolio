@@ -14,9 +14,11 @@
 <body>
     <!-- Topbar -->
     <div class="topbar">
-        <div class="container topbar-content" style="display: flex; align-items: center; justify-content: space-between; height: 64px;">
-            <nav class="topbar-nav" style="display: flex; align-items: center;">
+        <div class="container topbar-content" style="display: flex; align-items: center; height: 64px;">
+            <div style="flex:0 0 auto; display:flex; align-items:center;">
                 <i id="theme-toggle" class="fas fa-moon" style="margin-right: 24px; cursor: pointer;"></i>
+            </div>
+            <nav class="topbar-nav" style="flex:1 1 0; display: flex; align-items: center; justify-content: center; gap: 24px;">
                 <a href="#about">About</a>
                 <a href="#skills">Skills</a>
                 <a href="#projects">Projects</a>
@@ -25,6 +27,7 @@
                 <a href="#contact">Contact</a>
                 <a href="assets/cv/Maxwell_Rumahorbo_CV.pdf" target="_blank">CV</a>
             </nav>
+            <div style="flex:0 0 48px;"></div>
         </div>
     </div>
     <script>
