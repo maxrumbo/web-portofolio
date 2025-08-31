@@ -1,3 +1,12 @@
+/* Topbar icon color for light mode */
+.topbar-left i.fas.fa-sun {
+    color: #ffd700 !important; /* kuning untuk light mode */
+    transition: color 0.3s;
+}
+.topbar-left i.fas.fa-moon {
+    color: #7dcfff !important; /* biru untuk moon di light mode (jika dipakai) */
+    transition: color 0.3s;
+}
 /* ================= Topbar Custom (Light Mode) ================= */
 .topbar {
     position: sticky;
