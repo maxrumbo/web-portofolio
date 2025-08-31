@@ -1,3 +1,91 @@
+/* ================= Topbar Custom (Light Mode) ================= */
+.topbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1001;
+    border-bottom: 1px solid rgba(187, 154, 247, 0.08);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.topbar-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    height: 64px;
+}
+
+.topbar-left, .topbar-right {
+    flex: 0 0 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.topbar-nav {
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+}
+
+.topbar-nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+    padding: 6px 0;
+    position: relative;
+    transition: color 0.2s;
+}
+.topbar-nav a:hover, .topbar-nav a:focus {
+    color: #7dcfff;
+}
+.topbar-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #7dcfff, #bb9af7);
+    border-radius: 2px;
+    transition: width 0.3s;
+}
+.topbar-nav a:hover::after, .topbar-nav a:focus::after {
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .topbar-content {
+        padding: 0 10px;
+    }
+    .topbar-nav {
+        gap: 16px;
+    }
+}
+@media (max-width: 600px) {
+    .topbar-content {
+        flex-direction: column;
+        height: auto;
+        padding: 0 4px;
+    }
+    .topbar-nav {
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 0.98rem;
+    }
+    .topbar-left, .topbar-right {
+        flex: 0 0 40px;
+    }
+}
 /* Reset dan Base Styles */
 /* Global Smooth Transitions for Theme Switching */
 * {
